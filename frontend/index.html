@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Medicine Reminder</title>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <script>
+    function formatPhoneNumber() {
+      const phoneNumberInput = document.getElementById('phoneNumber');
+      let phoneNumber = phoneNumberInput.value.trim();
+
+      if (!phoneNumber.startsWith('+91')) {
+        alert('Please enter a valid Indian phone number starting with +91.');
+        return false; 
+      }
+
+      phoneNumberInput.value = phoneNumber;
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Set a Medicine Reminder</h1>
+    <form action="http://localhost:3000/reminder" method="post" onsubmit="return formatPhoneNumber();">
+      <label for="tablet">Tablet:</label><br>
+      <input type="text" id="tablet" name="tablet" required><br>
+      <label for="dosage">Dosage:</label><br>
+      <input type="text" id="dosage" name="dosage" required><br>
+      <label for="phoneNumber">Phone Number:</label><br>
+      <input type="text" id="phoneNumber" name="phoneNumber" required><br>
+      <label for="time">Time:</label><br>
+      <input type="datetime-local" id="time" name="time" required><br><br>
+      <input type="submit" value="Set Reminder">
+    </form>
+  </div>
+</body>
+</html>
